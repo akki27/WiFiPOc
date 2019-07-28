@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.RssiMonitorActivity"
+    android:scrollbars="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/switch_padding_medium">
+
+        <LinearLayout
+            android:id="@+id/layout_ap_selection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".3"
+                android:text="Select AP"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:layout_gravity="center_horizontal"/>
+
+            <Spinner
+                android:id="@+id/spnr_ap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/wifi_toggle_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="@dimen/card_elavation"
+            android:layout_below="@+id/layout_ap_selection">
+
+            <LinearLayout
+                android:id="@+id/layout_wifi_readings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/switch_padding_medium"
+                android:paddingStart="@dimen/switch_padding_medium"
+                android:paddingRight="@dimen/switch_padding_small"
+                android:paddingEnd="@dimen/switch_padding_small"
+                android:paddingTop="@dimen/switch_padding_extra_small"
+                android:paddingBottom="@dimen/switch_padding_extra_small"
+                android:baselineAligned="false">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical"
+                    app:layoutManager="LinearLayoutManager"/>
+
+                <TextView
+                    android:id="@+id/tv_no_bssid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="No BSSID AVAILABLE!!"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:visibility="invisible"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>

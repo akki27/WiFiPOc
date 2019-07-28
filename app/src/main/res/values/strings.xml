@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WiFiPOC</string>
+    <string name="title_activity_stats">StatsActivity</string>
+</resources>

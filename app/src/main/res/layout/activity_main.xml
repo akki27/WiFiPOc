@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MainActivity"
+    android:scrollbars="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/switch_padding_medium">
+
+        <LinearLayout
+            android:id="@+id/layout_wifi_toggle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/switch_wifi_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".35"
+                android:text="WiFi OFF"
+                android:textStyle="bold"
+                android:padding="@dimen/switch_padding_medium"/>
+
+            <Button
+                android:id="@+id/button_show_wifi_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".65"
+                android:gravity="center"
+                android:text="Show All Wifi"
+                android:textStyle="bold|italic"
+                android:textColor="@android:color/holo_blue_dark"
+                android:layout_toRightOf="@+id/switch_wifi_status"
+                android:background="@android:color/transparent"
+                android:paddingLeft="@dimen/switch_padding_medium"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/wifi_toggle_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/card_elavation"
+            android:layout_below="@+id/layout_wifi_toggle">
+
+            <LinearLayout
+                android:id="@+id/layout_wifi_readings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/switch_padding_medium"
+                android:paddingStart="@dimen/switch_padding_medium"
+                android:paddingRight="@dimen/switch_padding_small"
+                android:paddingEnd="@dimen/switch_padding_small"
+                android:paddingTop="@dimen/switch_padding_extra_small"
+                android:paddingBottom="@dimen/switch_padding_extra_small"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight=".55"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/switch_padding_small"
+                    android:paddingStart="@dimen/switch_padding_small"
+                    android:paddingRight="@dimen/switch_padding_small"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="Data Booster Status: "/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="Carnegie UI State: "/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="Supplicant State: "/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="Network Type: "/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Signal(dBm): "
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Speed(Mbps): "
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Download Bandwidth(Mbps): "
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload Bandwidth(Mbps): "
+                        android:textSize="12sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ping_btn_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/switch_padding_small">
+
+                        <Button
+                            android:id="@+id/button_ping"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Ping"
+                            android:textStyle="bold|italic"
+                            android:textColor="@android:color/holo_blue_dark"/>
+
+                        <ProgressBar
+                            android:id="@+id/ping_progressbar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="invisible"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight=".45"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/app_running_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@android:color/holo_blue_light"/>
+
+                    <TextView
+                        android:id="@+id/app_ui_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@android:color/holo_blue_light"/>
+
+                    <TextView
+                        android:id="@+id/supplicant_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@android:color/holo_blue_light"/>
+
+                    <TextView
+                        android:id="@+id/network_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/wifi_signal_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/wifi_link_speed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/bandwidth_download"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/bandwidth_upload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"/>
+
+                    <LinearLayout
+                        android:id="@+id/layout_packet_loss"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/switch_padding_small">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Packet Loss(%): "
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:id="@+id/packet_loss_val"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:singleLine="true"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/layout_packet_delay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Packet Delay(ms): "
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:id="@+id/packet_delay_val"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:singleLine="true"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/device_info_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/wifi_toggle_card"
+            android:padding="@dimen/switch_padding_medium"
+            android:text="Device Info: "
+            android:textStyle="bold"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/device_info_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/card_elavation"
+            android:layout_below="@+id/device_info_layout">
+
+            <LinearLayout
+                android:id="@+id/device_info_data_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/switch_padding_medium"
+                android:paddingStart="@dimen/switch_padding_medium"
+                android:paddingRight="@dimen/switch_padding_small"
+                android:paddingEnd="@dimen/switch_padding_small"
+                android:paddingTop="@dimen/switch_padding_extra_small"
+                android:paddingBottom="@dimen/switch_padding_extra_small">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".35"
+                    android:paddingLeft="@dimen/switch_padding_small"
+                    android:paddingStart="@dimen/switch_padding_small"
+                    android:paddingRight="@dimen/switch_padding_small"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/label_manufacturer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Manufacturer: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_model"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Model: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_os"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OS: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_hw_serial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HW Serial: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_android_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Android Id: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_uuid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UUID: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_apps_installed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Installed Apps: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_apps_running"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Running Apps: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_battery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Battery Level: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_charging_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Charging State: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_awake_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Awake State: "
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight=".65"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/device_manufacturer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:id="@+id/device_model"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:id="@+id/device_os"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:id="@+id/device_hw_serial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:id="@+id/device_android_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:id="@+id/device_uuid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:id="@+id/device_apps_installed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:id="@+id/device_apps_running"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:id="@+id/device_battery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:id="@+id/device_charging_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:id="@+id/device_awake_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/network_info_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/device_info_card"
+            android:padding="@dimen/switch_padding_medium"
+            android:text="Network Info: "
+            android:textStyle="bold"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/network_info_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/card_elavation"
+            android:layout_below="@+id/network_info_layout">
+
+            <LinearLayout
+                android:id="@+id/network_info_data_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/switch_padding_medium"
+                android:paddingStart="@dimen/switch_padding_medium"
+                android:paddingRight="@dimen/switch_padding_small"
+                android:paddingEnd="@dimen/switch_padding_small"
+                android:paddingTop="@dimen/switch_padding_extra_small"
+                android:paddingBottom="@dimen/switch_padding_extra_small">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:paddingLeft="@dimen/switch_padding_small"
+                    android:paddingStart="@dimen/switch_padding_small"
+                    android:paddingRight="@dimen/switch_padding_small"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/label_imei"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IMEI/MEID/ESN: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_imsi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IMSI: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_mobnum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mob Num: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_carrier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Carrier: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_hni"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HNI(MCC+MNC): "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_mac"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MAC: "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_ipv4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IP(v4): "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/label_ipv6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IP(v6): "
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight=".60"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/device_imei"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/network_imsi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/network_mobnum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/network_carrier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/network_hni"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/device_mac"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/device_ipv4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/device_ipv6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>

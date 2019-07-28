@@ -1,0 +1,19 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:id="@+id/action_network_stats"
+        android:title="NW Stats" />
+
+    <item android:id="@+id/action_runningapps"
+        android:title="Running Apps" />
+
+    <item android:id="@+id/action_foreground_service"
+        android:title="Start Service" />
+
+    <item android:id="@+id/action_work_manager"
+        android:title="WorkManager" />
+
+    <item android:id="@+id/action_rssi_monitor"
+        android:title="RSSI Monitor" />
+
+</menu>
