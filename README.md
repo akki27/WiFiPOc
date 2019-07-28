@@ -4,6 +4,4 @@
 3. WiFi RSSI Live monitoring
 4. Network Traffic Stats 
 5. Forground Service Test
-etc."# WiFiPoc" 
-# WiFiPoc
-# WiFiPoc
+etc.
